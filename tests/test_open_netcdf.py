@@ -1,4 +1,4 @@
-from ocean_data import read_netcdf_from_path
+from ocean_data import read_netcdf_from_path, read_mat_files_from_path
 
 
 def test_read_netcdf_from_path():
@@ -7,3 +7,8 @@ def test_read_netcdf_from_path():
     obtained_variables = list(netcdf_data.variables.keys())
     expected_variables = ["time", "latitude", "longitude", "analysed_sst", "mask"]
     assert obtained_variables == expected_variables
+
+
+def test_read_mat_files_from_path():
+    mat_path = "tests/data/2015_sst_mountly.mat"
+    read_mat_files_from_path(mat_path)
