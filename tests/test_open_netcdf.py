@@ -10,15 +10,12 @@ def test_read_netcdf_from_path():
 
 
 def test_read_mat_files_from_path():
-    mat_path = "tests/data/2015_sst_mountly.mat"
-    read_mat_files_from_path(mat_path)
-
     mat_path = "tests/data/longitud.mat"
-    mat_data = read_mat_files_from_path(mat_path)
-    obtained_longitude = mat_data["varlon"]
+    variable = "varlon"
+    obtained_longitude = read_mat_files_from_path(mat_path, variable)
     assert obtained_longitude.shape == (1113, 779)
 
     mat_path = "tests/data/latitud.mat"
-    mat_data = read_mat_files_from_path(mat_path)
-    obtained_longitude = mat_data["varlat"]
+    variable = "varlat"
+    obtained_longitude = read_mat_files_from_path(mat_path, variable)
     assert obtained_longitude.shape == (1113, 779)
