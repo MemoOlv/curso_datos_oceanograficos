@@ -7,6 +7,38 @@ link1_curso.nc:
 otro_ejemplo.nc:
 	curl https://www.ncei.noaa.gov/data/oceans/ghrsst/L4/GLOB/JPL/MUR25/2014/002/20140102090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc --output otro_ejemplo.nc
 
+
+define checkDirectories
+mkdir --parents $(@D)
+endef
+
+pngtemperatures = \
+	figures/temperature_1.png \
+	figures/temperature_2.png \
+	figures/temperature_3.png \
+	figures/temperature_4.png \
+	figures/temperature_5.png \
+	figures/temperature_6.png \
+	figures/temperature_7.png \
+	figures/temperature_8.png \
+	figures/temperature_9.png \
+	figures/temperature_10.png \
+	figures/temperature_11.png \
+	figures/temperature_12.png
+
+
+$(pngtemperatures): src/read_mat_files.py
+	$(checkDirectories)
+	python src/read_mat_files.py
+
+
+figures/temperature.gif: \
+	$(pngtemperatures) \
+	src/animation.py
+	$(checkDirectories)
+	python src/animation.py
+
+
 .PHONY: \
 		all \
 		check \
