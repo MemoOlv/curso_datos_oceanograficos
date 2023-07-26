@@ -20,5 +20,3 @@ for i in range(months):
 
     filename = f"figures/temperatura_{month_number + 1}.png"
     plot_temperature_with_lat_lon(longitude, latitude, filtered_temperature_month, filename)
-
-make_gif("figures")

@@ -19,8 +19,8 @@ def filter_temperature(temperature_1, temp_max, temp_min):
     return filtered_temperature_1
 
 
-def make_gif(frame_folder):
+def make_gif(frame_folder, gifname):
     frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/*.png")]
     frame_one = frames[0]
-    frame_one.save("my_awesome.gif", format="GIF", append_images=frames,
+    frame_one.save(gifname, format="GIF", append_images=frames,
                save_all=True, duration=100, loop=0)
