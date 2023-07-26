@@ -11,4 +11,5 @@ def test_read_netcdf_from_path():
 
 def test_read_mat_files_from_path():
     mat_path = "tests/data/2015_sst_mountly.mat"
-    read_mat_files_from_path(mat_path)
+    mat_data = read_mat_files_from_path(mat_path)
+    mat_data.keys()
