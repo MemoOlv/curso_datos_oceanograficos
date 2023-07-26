@@ -1,4 +1,9 @@
-from ocean_data import read_mat_files_from_path, plot_temperature_with_lat_lon, filter_temperature, make_gif
+from ocean_data import (
+    read_mat_files_from_path,
+    plot_temperature_with_lat_lon,
+    filter_temperature,
+    make_gif,
+)
 
 
 temperature_path = "tests/data/2015_sst_mountly.mat"
