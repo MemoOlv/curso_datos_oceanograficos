@@ -1,6 +1,6 @@
 from ocean_data import (
     read_mat_files_from_path,
-    plot_temperature_with_lat_lon,
+    plot_variable_with_lat_lon,
     filter_temperature,
     make_gif,
 )
@@ -24,4 +24,4 @@ for i in range(months):
     filtered_temperature_month = filter_temperature(temperature_month, temp_max, temp_min)
 
     filename = f"figures/temperatura_{month_number + 1}.png"
-    plot_temperature_with_lat_lon(longitude, latitude, filtered_temperature_month, filename)
+    plot_variable_with_lat_lon(longitude, latitude, filtered_temperature_month, filename)

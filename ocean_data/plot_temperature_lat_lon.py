@@ -4,7 +4,7 @@ import glob
 from PIL import Image
 
 
-def plot_temperature_with_lat_lon(longitude, latitude, temperature_1, filename):
+def plot_variable_with_lat_lon(longitude, latitude, temperature_1, filename):
     fig, ax = plt.subplots()
     ax.pcolor(longitude, latitude, temperature_1)
     ax.set_xlabel("Longitude (ºW)")
