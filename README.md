@@ -1,1 +1,1 @@
-A Python module to download oceanographic tools
+A Python module to download and process oceanographic data
