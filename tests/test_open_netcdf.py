@@ -3,12 +3,15 @@ from ocean_data import (
     read_mat_files_from_path,
     find_longitude_key,
     find_latitude_key,
+    extract_temporal_dimension,
 )
 
 
+netcdf_path = "tests/data/SST_20200111.nc"
+netcdf_data = read_netcdf_from_path(netcdf_path)
+
+
 def test_read_netcdf_from_path():
-    netcdf_path = "tests/data/SST_20200111.nc"
-    netcdf_data = read_netcdf_from_path(netcdf_path)
     obtained_variables = list(netcdf_data.variables.keys())
     expected_variables = ["time", "latitude", "longitude", "analysed_sst", "mask"]
     assert obtained_variables == expected_variables
@@ -48,3 +51,9 @@ def test_find_latitude_key():
     variables_keys = {variable_key: []}
     obtained = find_latitude_key(variables_keys)
     assert obtained == variable_key
+
+def test_extract_temporal_dimension():
+    expected_dimension = 0
+    variable = "analysed_sst"
+    obtained_dimension = extract_temporal_dimension(netcdf_data, variable)
+    assert obtained_dimension == expected_dimension
