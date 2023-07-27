@@ -52,6 +52,7 @@ def test_find_latitude_key():
     obtained = find_latitude_key(variables_keys)
     assert obtained == variable_key
 
+
 def test_extract_temporal_dimension():
     expected_dimension = 0
     variable = "analysed_sst"
