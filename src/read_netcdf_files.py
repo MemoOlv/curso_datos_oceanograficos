@@ -1,7 +1,7 @@
 from ocean_data import read_netcdf_from_path, plot_temperature_with_lat_lon
 from glob import glob
 
-netcdf_files = glob("tests/data/*.nc")
+netcdf_files = glob("tests/data/SST*.nc")
 
 i = 1
 for netcdf_file in netcdf_files:
@@ -13,3 +13,7 @@ for netcdf_file in netcdf_files:
     filename = f"temperature_from_{i}.png"
     plot_temperature_with_lat_lon(longitude, latitude, temperature, filename)
     i += 1
+
+    del temperature
+    del longitude
+    del latitude
