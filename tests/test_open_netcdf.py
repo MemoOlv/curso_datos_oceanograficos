@@ -1,4 +1,9 @@
-from ocean_data import read_netcdf_from_path, read_mat_files_from_path
+from ocean_data import (
+    read_netcdf_from_path,
+    read_mat_files_from_path,
+    find_longitude_key,
+    find_latitude_key,
+)
 
 
 def test_read_netcdf_from_path():
@@ -19,3 +24,27 @@ def test_read_mat_files_from_path():
     variable = "varlat"
     obtained_longitude = read_mat_files_from_path(mat_path, variable)
     assert obtained_longitude.shape == (1113, 779)
+
+
+def test_find_longitude_key():
+    variable_key = "lon"
+    variables_keys = {variable_key: []}
+    obtained = find_longitude_key(variables_keys)
+    assert obtained == variable_key
+
+    variable_key = "Longitude"
+    variables_keys = {variable_key: []}
+    obtained = find_longitude_key(variables_keys)
+    assert obtained == variable_key
+
+
+def test_find_latitude_key():
+    variable_key = "lat"
+    variables_keys = {variable_key: []}
+    obtained = find_latitude_key(variables_keys)
+    assert obtained == variable_key
+
+    variable_key = "Latitude"
+    variables_keys = {variable_key: []}
+    obtained = find_latitude_key(variables_keys)
+    assert obtained == variable_key
