@@ -5,10 +5,10 @@ from PIL import Image
 
 
 def plot_temperature_with_lat_lon(longitude, latitude, temperature_1, filename):
-    plt.pcolor(longitude, latitude, temperature_1)
-    plt.xlabel("Longitude (ºW)")
-    plt.ylabel("Latitude (ºN)")
-    plt.clim(25, 30)
+    fig, ax = plt.subplots()
+    ax.pcolor(longitude, latitude, temperature_1)
+    ax.set_xlabel("Longitude (ºW)")
+    ax.set_ylabel("Latitude (ºN)")
     plt.savefig(filename)
 
 
