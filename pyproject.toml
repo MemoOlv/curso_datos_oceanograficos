@@ -9,6 +9,7 @@ classifiers = [ "License :: OSI Approved :: GNU General Public License v3 or lat
 description-file = "README.md"
 module = "ocean_data"
 requires = [
+    "bs4",
     "matplotlib",
     "netCDF4",
     "requests",
