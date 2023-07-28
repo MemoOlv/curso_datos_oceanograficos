@@ -25,7 +25,7 @@ def extract_variable(variable_name, netcdf_data):
         variable = netcdf_data[variable_name][:,:]
     else:
         variable = netcdf_data[variable_name][temporal_shape]
-    return variable[:,:]
+    return np.float32(variable[:,:])
 
 
 def plot_variable_with_lat_lon(longitude, latitude, temperature_1, filename):
