@@ -43,6 +43,11 @@ def test_find_longitude_key():
     obtained = find_longitude_key(variables_keys)
     assert obtained == variable_key
 
+    variable_key = "LONGITUDE"
+    variables_keys = {variable_key: []}
+    obtained = find_longitude_key(variables_keys)
+    assert obtained == variable_key
+
 
 def test_find_latitude_key():
     variable_key = "lat"
@@ -51,6 +56,11 @@ def test_find_latitude_key():
     assert obtained == variable_key
 
     variable_key = "Latitude"
+    variables_keys = {variable_key: []}
+    obtained = find_latitude_key(variables_keys)
+    assert obtained == variable_key
+
+    variable_key = "LATITUDE"
     variables_keys = {variable_key: []}
     obtained = find_latitude_key(variables_keys)
     assert obtained == variable_key
