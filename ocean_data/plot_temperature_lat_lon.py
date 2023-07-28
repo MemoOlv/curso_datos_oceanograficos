@@ -3,15 +3,14 @@ import numpy as np
 import glob
 from PIL import Image
 
-from ocean_data import read_netcdf_from_path, get_latitude_and_longitude, extract_temporal_dimension
+from ocean_data import read_netcdf_from_path, get_latitude_and_longitude, extract_temporal_shape
 
 
 def plot_netcdf_files(netcdf_files, variable_name):
     for i in range(0, len(netcdf_files)):
         netcdf_data = read_netcdf_from_path(netcdf_files[i])
         longitude, latitude = get_latitude_and_longitude(netcdf_data)
-        temporal_dimension = extract_temporal_dimension(netcdf_data, variable_name)
-        variable = netcdf_data[variable_name][temporal_dimension]
+        variable = extract_variable(variable_name, netcdf_data)
 
         filename = f"{variable_name}_{i+1}.png"
         plot_variable_with_lat_lon(longitude, latitude, variable, filename)
@@ -19,6 +18,14 @@ def plot_netcdf_files(netcdf_files, variable_name):
         del variable
         del longitude
         del latitude
+
+def extract_variable(variable_name, netcdf_data):
+    temporal_shape = extract_temporal_shape(netcdf_data, variable_name)
+    if len(temporal_shape) < 3:
+        variable = netcdf_data[variable_name][:,:]
+    else:
+        variable = netcdf_data[variable_name][temporal_shape]
+    return variable[:,:]
 
 
 def plot_variable_with_lat_lon(longitude, latitude, temperature_1, filename):

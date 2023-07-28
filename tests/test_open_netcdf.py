@@ -3,9 +3,12 @@ from ocean_data import (
     read_mat_files_from_path,
     find_longitude_key,
     find_latitude_key,
-    extract_temporal_dimension,
+    extract_temporal_shape,
+    extract_variable
 )
 
+
+import numpy as np
 
 netcdf_path = "tests/data/SST_20200111.nc"
 netcdf_data = read_netcdf_from_path(netcdf_path)
@@ -53,8 +56,18 @@ def test_find_latitude_key():
     assert obtained == variable_key
 
 
-def test_extract_temporal_dimension():
-    expected_dimension = 0
+def test_extract_temporal_shape():
+    expected_dimension = (1,501, 1401)
     variable = "analysed_sst"
-    obtained_dimension = extract_temporal_dimension(netcdf_data, variable)
+    obtained_dimension = extract_temporal_shape(netcdf_data, variable)
     assert obtained_dimension == expected_dimension
+
+
+def test_extract_variable():
+    netcdf_path = "tests/data/gebco_2023_n32.0_s25.0_w-116.0_e-106.0.nc"
+    netcdf_data = read_netcdf_from_path(netcdf_path)
+    variable_name = "elevation"
+    obtained = extract_variable(variable_name, netcdf_data)
+    expected_shape = (1680, 2400)
+    obtained_shape = obtained.shape
+    assert obtained_shape == expected_shape

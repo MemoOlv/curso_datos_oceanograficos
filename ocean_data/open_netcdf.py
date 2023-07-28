@@ -28,5 +28,5 @@ def find_latitude_key(variables_keys):
     return [x for x in variables_keys if x.startswith("lat") or x.startswith("Lat")][0]
 
 
-def extract_temporal_dimension(netcdf_data, variable):
-    return netcdf_data[variable].shape[0] - 1
+def extract_temporal_shape(netcdf_data, variable):
+    return netcdf_data[variable].shape
