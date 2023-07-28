@@ -19,13 +19,14 @@ def plot_netcdf_files(netcdf_files, variable_name):
         del longitude
         del latitude
 
+
 def extract_variable(variable_name, netcdf_data):
     temporal_shape = extract_temporal_shape(netcdf_data, variable_name)
     if len(temporal_shape) < 3:
-        variable = netcdf_data[variable_name][:,:]
+        variable = netcdf_data[variable_name][:, :]
     else:
         variable = netcdf_data[variable_name][temporal_shape]
-    return np.float32(variable[:,:])
+    return np.float32(variable[:, :])
 
 
 def plot_variable_with_lat_lon(longitude, latitude, temperature_1, filename):
