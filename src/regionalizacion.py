@@ -16,14 +16,14 @@ for i in range(0, len(netcdf_files)):
     del variable
 
     temperature = netcdf_data[variable_name][0]
-    flatten_temperature = temperature.T.reshape(-1)
+    flatten_temperature = temperature.reshape(-1)
     flatten_temperatures.append(flatten_temperature)
 
 
 M_sin_estandarizar = flatten_temperatures
 print(np.nanmin(M_sin_estandarizar))
 
-M_estandarizada = [AEE(i) for i in M_sin_estandarizar]
+M_estandarizada = np.array([AEE(i) for i in M_sin_estandarizar])
 print("Tamaño: ", np.shape(M_estandarizada))
 print("Prueba de estandarización (media): ", np.nanmean(M_estandarizada[0]))
 print("Prueba de estandarización (std): ", np.std(M_estandarizada[0]))
@@ -36,7 +36,7 @@ eigenvalues, eigenvectors = np.linalg.eig(M_cov)
 print("Eigenvalues:", eigenvalues)
 print("Eigenvectors:", eigenvectors)
 
-feo = M_cov * (-1*eigenvectors)
+feo = M_cov * (-1*eigenvalues)
 
 feo_1 = feo[0]
 print("feo1: ", feo_1)
