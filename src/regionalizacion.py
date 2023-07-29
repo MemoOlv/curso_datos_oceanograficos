@@ -35,3 +35,8 @@ print("Cov matriz:", M_cov)
 eigenvalues, eigenvectors = np.linalg.eig(M_cov)
 print("Eigenvalues:", eigenvalues)
 print("Eigenvectors:", eigenvectors)
+
+feo = M_cov * (-1*eigenvectors)
+
+feo_1 = feo[0]
+print("feo1: ", feo_1)
