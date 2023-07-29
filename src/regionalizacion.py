@@ -11,7 +11,7 @@ temperatures = []
 flatten_temperatures = []
 for i in range(0, len(netcdf_files)):
     netcdf_data = read_netcdf_from_path(netcdf_files[i])
-    variable = netcdf_data[variable_name][0][:,:]
+    variable = netcdf_data[variable_name][0][:, :]
     temperatures.append(variable)
     del variable
 
@@ -23,11 +23,10 @@ for i in range(0, len(netcdf_files)):
 M_sin_estandarizar = flatten_temperatures
 print(np.nanmin(M_sin_estandarizar))
 
-M_estandarizada = [AEE(i) for i in M_sin_estandarizar ]
+M_estandarizada = [AEE(i) for i in M_sin_estandarizar]
 print("Tamaño: ", np.shape(M_estandarizada))
 print("Prueba de estandarización (media): ", np.nanmean(M_estandarizada[0]))
 print("Prueba de estandarización (std): ", np.std(M_estandarizada[0]))
-
 
 
 M_cov = np.cov(M_estandarizada)

@@ -21,11 +21,19 @@ def get_latitude_and_longitude(netcdf_data):
 
 
 def find_longitude_key(variables_keys):
-    return [x for x in variables_keys if x.startswith("lon") or x.startswith("Lon") or x.startswith("LON")][0]
+    return [
+        x
+        for x in variables_keys
+        if x.startswith("lon") or x.startswith("Lon") or x.startswith("LON")
+    ][0]
 
 
 def find_latitude_key(variables_keys):
-    return [x for x in variables_keys if x.startswith("lat") or x.startswith("Lat") or x.startswith("LAT")][0]
+    return [
+        x
+        for x in variables_keys
+        if x.startswith("lat") or x.startswith("Lat") or x.startswith("LAT")
+    ][0]
 
 
 def extract_temporal_shape(netcdf_data, variable):

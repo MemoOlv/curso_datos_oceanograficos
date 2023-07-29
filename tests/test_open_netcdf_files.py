@@ -4,7 +4,7 @@ from ocean_data import (
     find_longitude_key,
     find_latitude_key,
     extract_temporal_shape,
-    extract_variable
+    extract_variable,
 )
 
 
@@ -67,7 +67,7 @@ def test_find_latitude_key():
 
 
 def test_extract_temporal_shape():
-    expected_dimension = (1,501, 1401)
+    expected_dimension = (1, 501, 1401)
     variable = "analysed_sst"
     obtained_dimension = extract_temporal_shape(netcdf_data, variable)
     assert obtained_dimension == expected_dimension
