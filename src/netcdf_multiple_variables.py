@@ -1,4 +1,4 @@
-from ocean_data import read_netcdf_from_path, get_latitude_and_longitude, extract_variable
+from ocean_data import read_netcdf_from_path, get_latitude_and_longitude, AEE
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -15,9 +15,6 @@ temp = netcdf_data["TEMP"][:][0, :]
 sal = netcdf_data["PSAL"][:][0, :]
 pres = netcdf_data["PRES"][:][0, :]
 
-def AEE(x):
-    aes = (x - np.nanmean(x)) / np.std(x)
-    return aes
 
 aes_temp = AEE(temp)
 aes_sal = AEE(sal)

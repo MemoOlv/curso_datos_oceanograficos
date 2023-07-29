@@ -48,3 +48,8 @@ def make_gif(frame_folder, gifname):
     frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/*.png")]
     frame_one = frames[0]
     frame_one.save(gifname, format="GIF", append_images=frames, save_all=True, duration=100, loop=0)
+
+
+def AEE(x):
+    aes = (x - np.nanmean(x)) / np.std(x)
+    return aes
